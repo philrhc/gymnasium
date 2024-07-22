@@ -1,6 +1,3 @@
-# Author: Till Zemann
-# License: MIT License
-
 from __future__ import annotations
 from collections import defaultdict
 import numpy as np
@@ -27,7 +24,7 @@ class TdLearningAgent:
 
         self.training_error = []
 
-    def get_action(self, obs: tuple[int, int, bool]) -> int:
+    def get_action(self, obs: tuple) -> int:
         """
         Returns the best action with probability (1 - epsilon)
         otherwise a random action with probability epsilon to ensure exploration.
@@ -42,11 +39,11 @@ class TdLearningAgent:
 
     def update(
             self,
-            obs: tuple[int, int, bool],
+            obs: tuple,
             action: int,
             reward: float,
             terminated: bool,
-            next_obs: tuple[int, int, bool],
+            next_obs: tuple,
     ):
         """Updates the Q-value of an action."""
         future_q_value = (not terminated) * np.max(self.q_values[next_obs])

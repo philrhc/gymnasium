@@ -12,7 +12,7 @@ from agents.monte_carlo import MonteCarloAgent
 
 env = gym.make("Blackjack-v1", sab=True)
 
-n_episodes = 100_000
+n_episodes = 10_000
 # hyperparameters
 learning_rate = 0.01
 start_epsilon = 1.0
