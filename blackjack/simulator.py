@@ -1,45 +1,4 @@
-"""
-Solving Blackjack with Q-Learning
-=================================
 
-"""
-
-# %%
-# .. image:: /_static/img/tutorials/blackjack_AE_loop.jpg
-#   :width: 650
-#   :alt: agent-environment-diagram
-#   :class: only-light
-# .. image::  /_static/img/tutorials/blackjack_AE_loop_dark.png
-#   :width: 650
-#   :alt: agent-environment-diagram
-#   :class: only-dark
-#
-# In this tutorial, we’ll explore and solve the *Blackjack-v1*
-# environment.
-#
-# **Blackjack** is one of the most popular casino card games that is also
-# infamous for being beatable under certain conditions. This version of
-# the game uses an infinite deck (we draw the cards with replacement), so
-# counting cards won’t be a viable strategy in our simulated game.
-# Full documentation can be found at https://gymnasium.farama.org/environments/toy_text/blackjack
-#
-# **Objective**: To win, your card sum should be greater than the
-# dealers without exceeding 21.
-#
-# **Actions**: Agents can pick between two actions:
-#  - stand (0): the player takes no more cards
-#  - hit (1): the player will be given another card, however the player could get over 21 and bust
-#
-# **Approach**: To solve this environment by yourself, you can pick your
-# favorite discrete RL algorithm. The presented solution uses *Q-learning*
-# (a model-free RL algorithm).
-#
-
-
-# %%
-# Imports and Environment Setup
-# ------------------------------
-#
 
 # Author: Till Zemann
 # License: MIT License
@@ -59,7 +18,7 @@ env = gym.make("Blackjack-v1", sab=True)
 
 # hyperparameters
 learning_rate = 0.01
-n_episodes = 100_000
+n_episodes = 10_000_000
 start_epsilon = 1.0
 epsilon_decay = start_epsilon / (n_episodes / 2)  # reduce the exploration over time
 final_epsilon = 0.1
@@ -203,10 +162,6 @@ def create_plots(value_grid, policy_grid, title: str):
 value_grid, policy_grid = create_grids(agent, usable_ace=True)
 fig1 = create_plots(value_grid, policy_grid, title="With usable ace")
 plt.show()
-
-# %%
-# .. image:: /_static/img/tutorials/blackjack_with_usable_ace.png
-#
 
 # state values & policy without usable ace (ace counts as 1)
 value_grid, policy_grid = create_grids(agent, usable_ace=False)

@@ -31,10 +31,6 @@ class BlackjackAgent:
         self.training_error = []
 
     def get_action(self, obs: tuple[int, int, bool]) -> int:
-        """
-        Returns the best action with probability (1 - epsilon)
-        otherwise a random action with probability epsilon to ensure exploration.
-        """
         # with probability epsilon return a random action to explore the environment
         if np.random.random() < self.epsilon:
             return self.action_space.sample()
