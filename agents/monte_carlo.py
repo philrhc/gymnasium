@@ -3,7 +3,7 @@ from collections import defaultdict
 import numpy as np
 
 
-class BlackjackAgent:
+class MonteCarloAgent:
     def __init__(
             self,
             action_space,
@@ -30,7 +30,7 @@ class BlackjackAgent:
 
         self.training_error = []
 
-    def get_action(self, obs: tuple[int, int, bool]) -> int:
+    def get_action(self, obs: tuple) -> int:
         # with probability epsilon return a random action to explore the environment
         if np.random.random() < self.epsilon:
             return self.action_space.sample()
@@ -41,11 +41,11 @@ class BlackjackAgent:
 
     def update(
             self,
-            obs: tuple[int, int, bool],
+            obs: tuple,
             action: int,
             reward: float,
             terminated: bool,
-            next_obs: tuple[int, int, bool],
+            next_obs: tuple,
     ):
         self.episode_observations.append(obs)
         self.episode_rewards.append(reward)

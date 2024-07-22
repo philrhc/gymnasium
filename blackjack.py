@@ -1,8 +1,4 @@
 
-
-# Author: Till Zemann
-# License: MIT License
-
 from __future__ import annotations
 from collections import defaultdict
 import matplotlib.pyplot as plt
@@ -11,19 +7,19 @@ import seaborn as sns
 from matplotlib.patches import Patch
 from tqdm import tqdm
 import gymnasium as gym
-import td_learning
-import monte_carlo
+import agents.td_learning
+from agents.monte_carlo import MonteCarloAgent
 
 env = gym.make("Blackjack-v1", sab=True)
 
+n_episodes = 100_000
 # hyperparameters
 learning_rate = 0.01
-n_episodes = 10_000_000
 start_epsilon = 1.0
 epsilon_decay = start_epsilon / (n_episodes / 2)  # reduce the exploration over time
 final_epsilon = 0.1
 
-agent = monte_carlo.BlackjackAgent(
+agent = MonteCarloAgent(
     env.action_space,
     learning_rate=learning_rate,
     initial_epsilon=start_epsilon,

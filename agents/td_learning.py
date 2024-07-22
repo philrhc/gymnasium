@@ -6,7 +6,7 @@ from collections import defaultdict
 import numpy as np
 
 
-class BlackjackAgent:
+class TdLearningAgent:
     def __init__(
             self,
             action_space,
