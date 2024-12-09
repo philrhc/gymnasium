@@ -1,1 +1,1 @@
-playin' with gymnasium
+playin' with gymnasium, the models get strong
